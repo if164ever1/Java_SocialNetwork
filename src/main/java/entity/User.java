@@ -39,6 +39,7 @@ public class User {
     @Column(updatable = false)
     private LocalDateTime createdDate;
 
+    @Transient
     private Collection<? extends GrantedAuthority> autorities;
 
     @PrePersist
