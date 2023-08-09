@@ -29,7 +29,8 @@ public class User {
     private String password;
 
     @ElementCollection(targetClass = ERole.class)
-    @CollectionTable(name = "user_role", joinColumns = @JoinColumn("user_id"))
+    @CollectionTable(name = "user_role",
+            joinColumns = @JoinColumn(name = "user_id"))
     private final Set<ERole> role = new HashSet<>();
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "user", orphanRemoval = true)
@@ -41,6 +42,8 @@ public class User {
 
     @Transient
     private Collection<? extends GrantedAuthority> autorities;
+
+    public User(){}
 
     @PrePersist
     protected void onCreate(){
